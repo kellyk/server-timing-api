@@ -11,7 +11,9 @@
   <h1>Hello world!</h1>
   <img src="/scenery.jpeg" />
   <script>
-    window.fetch('/api');
+    window.fetch('/api').then(() => {
+      setTimeout(() => console.log(window.performance.getEntriesByType('resource')), 300)
+    });
   </script>
 </body>
 

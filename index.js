@@ -5,13 +5,13 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var options = {
   setHeaders: function (res, path, stat) {
-    res.set('Server-Timing', 'miss, db;dur=53, app;dur=47.2')
+    res.set('Server-Timing', 'asset;desc="Static asset";dur=100')
   }
 }
 app.use(express.static(path.join(__dirname, 'public'), options));
 
 app.get('/api', function (req, res) {
-  res.set('Server-Timing', 'cache;desc="Cache Read";dur=23.2')
+  res.set('Server-Timing', 'route;desc="Route";dur=200')
   res.send('hello');
 });
 
